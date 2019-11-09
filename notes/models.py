@@ -9,6 +9,12 @@ class Note(models.Model):
     category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, verbose_name="Категория")
     favorite = models.BooleanField(verbose_name="Избранная")
 
+    def __str__(self):
+        return self.title
+
 class Category(models.Model):
-    name = models.CharField(max_length=88)
+    name = models.CharField(max_length=88, verbose_name="Название категории")
+
+    def __str__(self):
+        return self.name
     
