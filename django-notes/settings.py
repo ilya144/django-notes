@@ -25,7 +25,7 @@ SECRET_KEY = '9#d^n@*j0)1t_8r%n$%e__kq3i$hg4s8r_%t@9+b+c4aveokj('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "lvh.me", "127.0.0.1"]
 
 
 # Application definition
@@ -50,6 +50,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
+SESSION_COOKIE_HTTPONLY = True
 
 ROOT_URLCONF = 'django-notes.urls'
 
@@ -127,3 +130,11 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
      os.path.join(BASE_DIR, "webclient/static"),
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        # 'rest_framework.permissions.IsAuthenticated',
+    )
+}
+
+AUTH_USER_EMAIL_UNIQUE = True
